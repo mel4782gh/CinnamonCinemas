@@ -1,0 +1,46 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+class Seat{
+-row:char
+-number:int
++seat(row:char, number:int):void
++getRow():char
++setRow(int):void
++getNumber():char
++setNumber(int):void
+}
+
+
+class Cinema{
+-seatsAllocated:ArrayList
+-numSeatsAvailable:int
+
++cinema():void
++getSeatsAllocated():ArrayList
++setSeatsAllocated(ArrayList):void
++getNumSeatsAvailable():int
++setNumSeatsAvailable(int):void
+}
+
+SeatAllocator o-- Cinema :"allocates"
+class SeatAllocator{
+-cinema:Cinema
+
++seatAllocator():void
++allocateSeat():void
+-outputSeatAllocated();
++getCinema():Cinema;
+}
+
+class SeatsRequestValidator{
+-seatsRequested:int
+
++seatsRequestValidator():void
++validSeatsRequestNumber(numSeatsRequested:int):void
++isSeatAvailability(cinema:Cinema, numSeatsRequested:int):void
+}
+
+
+@enduml
