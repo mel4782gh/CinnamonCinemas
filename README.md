@@ -23,8 +23,11 @@ Once there are not enough seats available to be allocated then the program can h
 <p>Class diagram contains objects for seat, cinema, seat allocation, and seat request validation. To separate concerns.</p>
 
 <p>Testing Strategy</p>
-<p>Test create a Seat with row and number</p>
-<p>Test create a cinema with seat allocation and seat availability</p>
-<p>Test create a seat allocator to allocate a seat for a cinema and output result</p>
-<p>Test create seat request validator to validate the request for number of seats, validate that number requested between 1-3</p>
-<p>Test create seat request validator to validate the request for number of seats against availability</p>
+
+<p>2 Tests for seat request validator to validate the request for number of seats, validate that number requested between 1-3</p>
+<p>2 Tests to allocate a seat and multiple seats</p>
+
+<p>Future implementation</p>
+<p>Seat request validator - to check there is seat availability</p>
+<p>Stub a test helper method for random number input</p>
+<p>Implement main application</p>
