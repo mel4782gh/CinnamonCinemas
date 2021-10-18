@@ -20,6 +20,7 @@ class Cinema{
 +cinema():void
 +getSeatsAllocated():ArrayList
 +setSeatsAllocated(ArrayList):void
++allocateSeats(numSeatsRequested:int):void
 +getNumSeatsAvailable():int
 +setNumSeatsAvailable(int):void
 }
@@ -28,7 +29,7 @@ SeatAllocator o-- Cinema :"allocates"
 class SeatAllocator{
 -cinema:Cinema
 
-+seatAllocator():void
++seatAllocator(cinema:Cinema):void
 +allocateSeat():void
 -outputSeatAllocated();
 +getCinema():Cinema;
@@ -40,6 +41,7 @@ class SeatsRequestValidator{
 +seatsRequestValidator():void
 +validSeatsRequestNumber(numSeatsRequested:int):void
 +isSeatAvailability(cinema:Cinema, numSeatsRequested:int):void
++getSeatsReuqested():int
 }
 
 

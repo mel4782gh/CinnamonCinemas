@@ -4,10 +4,11 @@ public class Seat {
     private char row;
     private int number;
 
-    public Seat(char row, int number){
-        this.row =row;
+    public Seat(char row, int number) {
+        this.row = row;
         this.number = number;
     }
+
     public char getRow() {
         return row;
     }
