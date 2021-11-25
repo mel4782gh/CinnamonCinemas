@@ -14,7 +14,6 @@ public class SeatAllocatorTest {
         //Arrange
 
         //Create cinema and seat allocator
-
         Cinema cinema = new Cinema();
         SeatAllocator seatAllocator = new SeatAllocator(cinema);
 
@@ -35,12 +34,30 @@ public class SeatAllocatorTest {
     }
 
 
-    //Hi Kim/James, Please could you advise how to test using parameterizedtest that seat row and number correct for number of seats stored.
-    //I can check that 2 seats have been allocated, but how do I use parameters to check seats A1 and A2 stored. Do I need to pass in an enum object for the seat row and number, e.g. A1,A2,A3?
-    //Test to allocate multiple seats
+    //Check seats correctly allocated over 2 rows
     @ParameterizedTest
-    @CsvSource({"2,2", "3,3", "5,5", "11,11"})
-    public void allocateMultipleSeatsTest(int numSeatsRequested, int expectedNumSeatsAllocated) {
+    @CsvSource({"1,A,1", "2,A,2", "3,A,3", "4,A,4","5,A,5","6,B,1","7,B,2","8,B,3","9,B,4","10,B,5",})
+    public void allocateSeatsOverTwoRowsTest(int numSeatsRequested, String seatRow, int seatNum) {
+        //Arrange
+        //Create cinema and seat allocator
+        Cinema cinema = new Cinema();
+        SeatAllocator seatAllocator = new SeatAllocator(cinema);
+        char expectedSeatRow = seatRow.charAt(0);
+        int expectedSeatNum = seatNum;
+
+        //Act - allocate seat
+        seatAllocator.allocateSeats(numSeatsRequested);
+
+        //Assert
+        Seat seat = (Seat) cinema.getSeatsAllocated().get(numSeatsRequested-1);
+        Assertions.assertEquals(expectedSeatRow, seat.getRow());
+        Assertions.assertEquals(expectedSeatNum, seat.getNumber());
+    }
+
+    //Check can allocate all seats
+    @ParameterizedTest
+    @CsvSource({"2,2", "3,3", "5,5", "11,11", "15,15"})
+    public void allocateAllSeatsTest(int numSeatsRequested, int expectedNumSeatsAllocated) {
         //Arrange
         //Create cinema and seat allocator
         Cinema cinema = new Cinema();
@@ -53,7 +70,5 @@ public class SeatAllocatorTest {
         //Assert
         //Check the number of seats allocated is as expected
         Assertions.assertEquals(expectedNumSeatsAllocated, cinema.getSeatsAllocated().size());
-
-
     }
 }

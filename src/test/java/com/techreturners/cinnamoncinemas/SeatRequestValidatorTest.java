@@ -25,7 +25,6 @@ public class SeatRequestValidatorTest {
 
         //Act and Assert
         Assertions.assertEquals(expectedRequest, seatReqValidator.getSeatsRequested());
-
     }
 
     //test to check if exception thrown with seat number requested less than zero or greater than three
@@ -36,7 +35,6 @@ public class SeatRequestValidatorTest {
         //Arrange
         //Create a SeatRequestValidator
         SeatRequestValidator seatReqValidator = new SeatRequestValidator();
-
 
         //Act and Assert
         assertThrows(IllegalArgumentException.class, () -> seatReqValidator.validSeatsRequestNumber(inputRequest), "Enter a request for seats between 1 and 3");
